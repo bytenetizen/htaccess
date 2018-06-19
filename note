@@ -3,20 +3,40 @@
 RewriteCond  %{REMOTE_ADDR} !xxx.xxx.xxx.xxx
 RewriteCond %{REQUEST_FILENAME} !image.jpg
 RewriteRule ^(.*)$ close.html [L,QSA]
-
 ####################################################
+
 Переадресация index.php
+
 RewriteEngine On
 RewriteRule ^index.php$ / [QSA,R]
-
 #####################################################
+
 Options +SymLinksIfOwnerMatch
-
 #####################################################
+
 Запрет доступа
 
 Order Deny,Allow
 Deny from all
 Allow from xxx.xxx.xxx.xxx
 ####################################################
+
+Кодировка
+
+AddDefaultCharset UTF-8
+Если Вам нужна windows-1251, то тогда так:
+AddDefaultCharset WINDOWS-1251
+####################################################
+
+php_value date.timezone Europe/Kiev
+####################################################
+
+Запрет доступа к файлу
+
+<FilesMatch "some\.log$"> 
+Order Deny,Allow
+Deny from All
+ </FilesMatch> 
+####################################################
+
 
