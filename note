@@ -1,0 +1,22 @@
+Закрыть деректорию с переадресацией на страницу close.html
+
+RewriteCond  %{REMOTE_ADDR} !xxx.xxx.xxx.xxx
+RewriteCond %{REQUEST_FILENAME} !image.jpg
+RewriteRule ^(.*)$ close.html [L,QSA]
+
+####################################################
+Переадресация index.php
+RewriteEngine On
+RewriteRule ^index.php$ / [QSA,R]
+
+#####################################################
+Options +SymLinksIfOwnerMatch
+
+#####################################################
+Запрет доступа
+
+Order Deny,Allow
+Deny from all
+Allow from xxx.xxx.xxx.xxx
+####################################################
+
